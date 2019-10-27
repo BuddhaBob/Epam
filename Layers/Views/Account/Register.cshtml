@@ -1,0 +1,68 @@
+﻿@model LayersDLL.BL.RegisterModel
+
+@{
+    Layout = "~/Views/_Auth.cshtml";
+    ViewBag.Title = "Register";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    @section Content
+    {
+
+
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "Register" }))
+        {
+            <div class="Register">
+                <h1>Registration</h1>
+                @Html.AntiForgeryToken()
+
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <label>
+
+                    @Html.EditorFor(model => model.Nickname, new { htmlAttributes = new { id = "nickname", type = "text", name = "Nickname", placeholder = "Nickname", required = "true" } })
+                    @Html.ValidationMessageFor(model => model.Nickname, "", new { @class = "text-danger" })
+
+                </label>
+
+                <label>
+
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { id = "email", type = "email", name = "Email", placeholder = "Email", required = "true" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+                </label>
+
+                <label>
+
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { id = "password", type = "password", name = "Password", placeholder = "Password", required = "true" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+                </label>
+
+                <label>
+
+                    @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { id = "confirm-password", type = "password", name = "confirmPassword", placeholder = "Confirm your password", required = "true" } })
+                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+
+                </label>
+
+                <label>
+                    <input class="register-button" type="submit" name="registration" value="Registration">
+                </label>
+                <label><a href="@Url.Action("/Login")" id="register-link">Already registered? Sign in</a></label>
+
+
+            </div>
+        }
+        <script type="text/javascript" src="~/Scripts/inputscript.js"></script>
+
+    }
+</body>
+</html>

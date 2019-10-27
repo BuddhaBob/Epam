@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="~/Content/globalstyle.css">
+    <link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet">
+    <title>@ViewBag.Title</title>
+
+</head>
+
+<body>
+    <header>
+        <div class="header-div">
+            <nav class="nav">
+                <a href="#" name="Logo">OneNoteStory</a>
+                @RenderSection("Header", required: false)
+
+            </nav>
+        </div>
+    </header>
+
+    <main id="content" class="group" role="main">
+        @RenderSection("Content")
+
+    </main>
+
+    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/inputscript.js"></script>
+</body>
+</html>

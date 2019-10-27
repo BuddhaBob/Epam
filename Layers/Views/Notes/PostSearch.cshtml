@@ -1,0 +1,40 @@
+﻿@model IEnumerable<LayersDAL.Entity.Post>
+
+
+@for (int i = 0; i < Model.Count(); i++)
+{
+    <ul>
+        <li>
+
+            <a class="listElem" href="@Url.Action("CurrentPost", "Notes", new { Model.ToList()[i].PostId })">
+                <h2>@Html.DisplayFor(modelItem => Model.ToList()[i].Title)</h2>
+                <p>
+
+                </p>
+            </a>
+        </li>
+    </ul>
+
+}
+
+<script type="text/javascript">
+
+    $(function () {
+        $.ajaxSetup({ cache: false });
+        $(".listElem").click(function (e) {
+
+            e.preventDefault();
+            $.get(this.href, function (data) {
+                $('#dialogContent').html(data);
+                $('#modDialog').modal('show');
+            });
+        });
+    });
+
+    window.setInterval(function() {
+    $.post('@Url.Action("MainContent", "Notes")', function(result) {
+        $('#content').html(result);
+    });
+}, 10 * 1000);
+</script>
+

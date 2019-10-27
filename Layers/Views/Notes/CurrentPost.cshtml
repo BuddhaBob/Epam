@@ -1,0 +1,59 @@
+﻿@model LayersDAL.Entity.Post
+
+
+<link rel="stylesheet" type="text/css" href="~/Content/current-post-style.css">
+
+
+<div class="modal-content">
+
+
+    <div class="modal-header">
+        <button class="close" data-dismiss="modal" area-hidden=true> </button>
+        <label class="postid" hidden ="hidden">@Model.PostId</label>
+    </div>
+    <div class="modal-vote">
+        <div class="vote">
+
+            @using (Ajax.BeginForm("RatingCalculation", "Notes", new { postId = Model.PostId }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "ratingId" }))
+            {
+                @Html.AntiForgeryToken()
+                if (ViewBag.UpFlag == true)
+                {
+                    <input class="upvote" type="submit" name="submitButton" value="up" disabled="disabled">
+                }
+                else
+                {
+                    <input class="upvote" type="submit" name="submitButton" value="up">
+                }
+                <div class="rating"><h4 id="ratingId">@Model.Rating</h4></div>
+                if (ViewBag.DownFlag == true)
+                {
+                    <input class="downvote" type="submit" name="submitButton" value="down" disabled="disabled">
+                }
+                else
+                {
+                    <input class="downvote" type="submit" name="submitButton" value="down">
+                }
+
+
+            }
+        </div>
+    </div>
+    <div class="modal-body">
+        <div class="title-modal"><h3>@Model.Title</h3></div>
+        <div class="text-modal">@Model.Content</div>
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+

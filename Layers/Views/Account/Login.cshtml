@@ -1,0 +1,56 @@
+﻿@model LayersDLL.BL.LoginModel
+
+@{
+    Layout = "~/Views/_Auth.cshtml";
+    ViewBag.Title = "Login";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    @section Content
+    {
+
+
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "Register" }))
+        {
+            <div class="Register">
+                <h1>Login</h1>
+                @Html.AntiForgeryToken()
+
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <label>
+
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { id = "email", type = "email", name = "Email", placeholder = "Email", required = "true" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+                </label>
+
+                <label>
+
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { id = "password", type = "password", name = "Password", placeholder = "Password", required = "true" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+                </label>
+
+                <label>
+                    <input class="register-button" type="submit" name="registration" value="Login">
+                </label>
+
+
+                <label><a href="@Url.Action("/Register")" id="register-link">Register</a></label>
+
+            </div>
+        }
+        <script type="text/javascript" src="~/Scripts/logincheck.js"></script>
+
+    }
+</body>
+</html>

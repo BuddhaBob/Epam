@@ -1,0 +1,153 @@
+.modal {
+    transition:0.4s;
+    border: 3px solid #fffcbf !important;
+    background-color: #FFFCBB !important;
+    width: 97.5% !important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    font-family: 'Abel', sans-serif;
+}
+
+.modal-content {
+}
+
+.modal-vote {
+    display: inline-flex;
+    position:fixed;
+    flex-direction: column;
+    align-self: flex-start;
+    bottom: 39em;
+}
+
+.vote {
+    display: block;
+    align-items: center;
+    flex-direction: column;
+    width: 30px;
+    height: 100%;
+    margin: 50px 30px 30px 40px;
+
+    
+}
+
+.rating {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    margin: 10px 0 10px 5px;
+    font-size: 18pt;
+    align-self: center;
+}
+
+.modal-body {
+    position:fixed;
+    display: inline-block;
+    margin: 30px 30px 30px 7%;
+    width: 70%;
+}
+
+.upvote {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid #6FF252;
+    border-top: none;
+    background:none;
+    outline: none;
+    transition: 0.2s;
+}
+
+.upvote:hover {
+    transition: 0.2s;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid green;
+    
+}
+
+.upvote:disabled {
+    border-bottom: 20px solid silver;
+}
+
+.downvote {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #EF5E53;
+    border-bottom: none;
+    background: none;
+    outline: none;
+    transition: 0.2s;
+}
+
+.downvote:hover {
+    transition: 0.2s;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid red;
+
+}
+
+.downvote:disabled {
+    border-top: 20px solid silver;
+}
+
+.selected {
+    opacity: 0.5;
+}
+
+#form0 {
+    background-color: #FFFCBB !important;
+}
+
+#form1 {
+    background-color: #FFFCBB !important;
+}
+
+.title-modal {
+    border-bottom: 2px solid #3b3c36;
+    padding: 0 0 0 15px;
+    width: 90%;
+    margin: 40px 20px 20px 20px;
+    font-size: 28pt;
+}
+
+.text-modal {
+    width: 70%;
+    margin: 20px 20px;
+    font-size: 20pt;
+}
+
+.close {
+    position: absolute;
+    right: 32px;
+    top: 10px;
+    width: 32px;
+    height: 32px;
+    opacity: 0.3;
+    background-color: transparent;
+    outline: none;
+    border: none;
+}
+
+.close:hover {
+    opacity: 1;
+}
+
+.close:before, .close:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 33px;
+    width: 2px;
+    background-color: #333;
+}
+
+.close:before {
+    transform: rotate(45deg);
+}
+
+.close:after {
+    transform: rotate(-45deg);
+}

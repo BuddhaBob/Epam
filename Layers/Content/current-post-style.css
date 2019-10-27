@@ -1,0 +1,62 @@
+
+
+.post-opening {
+    position: fixed;
+    font-family: 'Abel', sans-serif;
+    padding: 6px 12px;
+    width: 100px;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
+    margin: 0 0 0 10em;
+    border-radius: 15px;
+    background-color: #3A3D2B;
+    color: #FFAD05;
+    transition: 0.2s;
+    outline: none;
+    cursor: pointer;
+    border: none;
+}
+
+.post-opening span {
+    justify-content: center;
+    text-align: center;
+}
+
+
+
+.modal-post {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  font-family:  'Abel', sans-serif;
+   z-index: 1; /* Sit on top */
+  left: 1%;
+  top: 1em;
+  width: 98%; /* Full width */
+  height: 700px; /* Full height */
+   border-radius: 10px;
+  border: 2px solid #FFAD05;
+  background-color: rgb(255,255,255); /* Fallback color */
+  background-color: #FCFF4B; /* Black w/ opacity */
+  transition: 0.2s;
+}
+
+.modal-post.title {
+    border:2px solid red;
+    width: 100%;
+    height: 20%;
+}
+
+.modal-post form  {
+  display: block;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: #FCFF4B;
+}
+
+.errorLine {
+    transition: 0.2s;
+    border-bottom: solid 4px red !important;
+}
+

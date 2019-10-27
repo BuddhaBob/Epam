@@ -1,0 +1,75 @@
+﻿@model LayersDAL.Entity.Post
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="~/Content/main-page-style.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/add-post-style.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/modal-post-style.css">
+    <link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
+    <title>Notes</title>
+
+</head>
+
+<body>
+    @Html.AntiForgeryToken()
+    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.js"></script>
+
+    @RenderSection("Header1", required: false)
+    <header>
+        <div class="header-div">
+            <nav class="nav">
+                <a href="#" name="Logo">OneNoteStory</a>
+                <div class="search-div">
+
+                    <input class="search-class" type="text" name="Search" placeholder="Type to search">
+                    <input class="button-class" type="submit" name="SearchButton" value="Search">
+                    <input type="button" id="addNote" class="post-adding" value="Add note" />
+                </div>
+                <a href="@Url.Action("Logoff","Account")" id="logout">Logout</a>
+            </nav>
+        </div>
+    </header>
+
+
+    @Html.Partial("Add")
+
+
+
+    <script type="text/javascript" src="~/Scripts/addpostscript.js"></script>
+
+    <script type="text/javascript" src="~/Scripts/autoupdateposts.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <main id="content" class="group" role="main">
+
+        <div id="modDialog" class="modal fade">
+            <div id="dialogContent" class="modal-dialog"></div>
+        </div>
+        @Html.Action("MainContent")
+
+    </main>
+
+
+
+    @RenderBody()
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

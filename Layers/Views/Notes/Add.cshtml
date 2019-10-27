@@ -1,0 +1,121 @@
+﻿@model LayersDLL.BL.AddPostModel
+
+
+<link rel="stylesheet" type="text/css" href="~/Content/add-post-style.css">
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.validate.js"></script>
+
+
+<div class="modal" id="myModal">
+    @using (Ajax.BeginForm("Add", "Notes", new AjaxOptions { UpdateTargetId = "content" }, htmlAttributes: new { id = "form-modal" }))
+    {
+        <div class="modal-divs">
+
+            <span class="close"></span>
+        </div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="title">
+            <label class="modal-label">Write a title of your story</label><br>
+            <input type="text" asp-for="Title" name="Title" id="title-input" placeholder="Type a title" maxlength="45" required="required"><br>
+        </div>
+        <div class="content">
+            <label class="modal-label">Your story</label><br>
+            @Html.TextAreaFor(model => model.Text, new { name = "Content-text", @cols = 150, @rows = 20, id = "textarea-input", maxlength = 1000, required = "required", placeholder = "Type your own story" })
+            <!--textarea-- asp-for="Text" name="Content-text" cols="150" rows="20" id="textarea-input" maxlength="1000" required="required" placeholder="Type your own story"></!--textarea--><br>
+        </div>
+        <div class="submit">
+            <br>
+
+            
+            <input type="submit" name="content-button" id="submit-input" value="Add"><br>
+            <script>
+
+
+                $("#submit-input").attr("disabled", true);
+
+                $("#title-input").on('change keyup paste', function () {
+                    var titleContext = $("#title-input").val();
+                    console.log("title");
+
+                    if ((titleContext.length) > 20 || (titleContext.length) < 1) {
+                        console.log(titleContext.length);
+                        $("#submit-input").attr("disabled", true);
+                        $("#title-input").addClass("errorLine");
+                    }
+                    else {
+                        $("#title-input").removeClass();
+                        if (!($("#textarea-input").val().length > 1000 || $("#textarea-input").val().length < 2)) {
+                            $("#submit-input").attr("disabled", false);
+                            close();
+                        }
+                    }
+                });
+
+                $("#textarea-input").on('change keyup paste', function () {
+                    var textContext = $("#textarea-input").val();
+                    console.log(textContext.length);
+
+                    if (textContext.length > 1000 || textContext.length < 2) {
+                        $("#submit-input").attr("disabled", true);
+                        $("#textarea-input").addClass("errorLine");
+                    }
+                    else {
+                        $("#textarea-input").removeClass();
+                        if (!($("#title-input").val().length > 20 || $("#title-input").val().length < 1)) {
+                            $("#submit-input").attr("disabled", false);
+                            close();
+                        }
+                    }
+                });
+
+                if (!$("#submit-input").is("[disabled]")) {
+                    alert("pshol nah");
+                }
+
+
+
+
+                function close() {
+                    var btn = document.getElementById("submit-input");
+
+                    $("#submit-input").removeAttr("disabled");
+
+                    btn.onclick = function(event){
+                      modal.style.display = "none";
+                      content.style.opacity = 1;
+                      header.style.opacity = 1;
+                    }
+
+                        $(function(){    
+                            $('.button').on("click", function(){        
+                                $.post('@Url.Action("PostActionToUpdatePoints", "Home")').always(function(){
+                                    $('.target').load('/Notes/MainContent');        
+                                })        
+                            });
+                        });   
+
+                    console.log("Done");
+
+
+                }
+
+            </script>
+
+        </div>
+
+    }
+
+
+
+</div>
+
+
+
+
+
+
+
+
